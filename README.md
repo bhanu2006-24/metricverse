@@ -5,6 +5,7 @@
     <strong>The Ultimate GitHub Profile Metrics Generator</strong>
   </p>
   <p>
+    <a href="https://metricverse.pages.dev/"><strong>🔴 Live Demo</strong></a> •
     <a href="#features">Features</a> •
     <a href="#getting-started">Getting Started</a> •
     <a href="#categories">Categories</a> •
@@ -26,6 +27,8 @@
 ## 🚀 Overview
 
 **Metricverse** is a state-of-the-art metrics generator designed to transform your GitHub profile into a premium portfolio. Unlike standard analytic tools, Metricverse focuses on **visual excellence**, **gamification**, and **diverse themes**.
+
+👉 **Live Demo:** [metricverse.pages.dev](https://metricverse.pages.dev/)
 
 Whether you want a cyberpunk terminal, an 8-bit game analysis, or a sleek corporate infographic, Metricverse has a widget for you.
 
