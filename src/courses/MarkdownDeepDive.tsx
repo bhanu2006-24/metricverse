@@ -15,17 +15,18 @@ export const MarkdownDeepDive: Course = {
         <div className="space-y-6">
            <div className="prose prose-invert max-w-none">
               <p className="text-xl text-gray-300 leading-relaxed font-light">
-                Markdown is more than just text formatting; it's the semantic structure of your developer identity. A well-formatted profile communicates attention to detail and technical proficiency.
+                Markdown is the lingua franca of developers. It's not just about making text bold; it's about structuring your technical documentation, issues, and PR comments effectively. This course takes you from basic syntax to advanced layout techniques.
               </p>
            </div>
            
            <div className="bg-[#161b22] border border-github-border rounded-xl p-5">
-              <h4 className="font-bold text-gray-200 mb-2">Structure Hierarchy</h4>
-              <p className="text-gray-400 text-sm mb-4">Use headers to guide the reader's eye. Limit yourself to one H1.</p>
+              <h4 className="font-bold text-gray-200 mb-2">Semantic Structure</h4>
+              <p className="text-gray-400 text-sm mb-4">Structure your documents like an outlining tool. Screen readers and search engines rely on this hierarchy.</p>
               <pre className="text-xs bg-black/50 p-3 rounded font-mono text-gray-500">
-                <span className="text-blue-400">#</span> H1 - Main Title (Project Name)<br/>
-                <span className="text-blue-400">##</span> H2 - Major Section (Features, Installation)<br/>
-                <span className="text-blue-400">###</span> H3 - Subsection (Details)<br/>
+                <span className="text-blue-400">#</span> Title (H1) - Only one per page<br/>
+                <span className="text-blue-400">##</span> Major Section (H2)<br/>
+                <span className="text-blue-400">###</span> Subsection (H3)<br/>
+                <span className="text-blue-400">####</span> Detail Level (H4)
               </pre>
            </div>
         </div>
@@ -33,26 +34,114 @@ export const MarkdownDeepDive: Course = {
     },
     {
       id: 'md-2',
-      title: "Emphasis & Style",
+      title: "Lists & Quotes",
       type: 'read',
       content: (
         <div className="space-y-6">
-           <div className="bg-[#161b22] border border-github-border rounded-xl p-5">
-              <h4 className="font-bold text-gray-200 mb-2">Emphasis</h4>
-              <pre className="text-xs bg-black/50 p-3 rounded font-mono text-gray-500">
-                <span className="text-purple-400">**Bold**</span> for key benefits<br/>
-                <span className="text-purple-400">*Italic*</span> for side notes<br/>
-                <span className="text-purple-400">~~Strike~~</span> for deprecation or completed tasks
-              </pre>
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+             <div className="bg-[#161b22] border border-github-border rounded-xl p-5">
+                <h4 className="font-bold text-gray-200 mb-2">Lists</h4>
+                <div className="text-xs text-gray-400 space-y-2">
+                  <p>Unordered: Use <code>-</code> or <code>*</code></p>
+                  <pre className="bg-black/50 p-2 rounded">- Item 1<br/>  - Nested Item</pre>
+                  <p>Ordered: Use <code>1.</code></p>
+                  <pre className="bg-black/50 p-2 rounded">1. First<br/>2. Second</pre>
+                </div>
+             </div>
+             <div className="bg-[#161b22] border border-github-border rounded-xl p-5">
+                <h4 className="font-bold text-gray-200 mb-2">Blockquotes</h4>
+                <p className="text-xs text-gray-400 mb-2">Perfect for highlighting warnings or key takeaways.</p>
+                <div className="flex gap-4">
+                   <div className="w-1/2">
+                      <pre className="bg-black/50 p-2 rounded text-xs text-gray-500">&gt; Note: This is crucial.</pre>
+                   </div>
+                   <div className="w-1/2 border-l-4 border-gray-500 pl-4 py-1">
+                      <p className="text-gray-400 text-xs italic">Note: This is crucial.</p>
+                   </div>
+                </div>
+             </div>
            </div>
-           <p className="text-gray-400 text-sm">
-             <strong>Pro Tip:</strong> Don't overuse bold text. If everything is bold, nothing is.
-           </p>
         </div>
       )
     },
     {
       id: 'md-3',
+      title: "Links & Images",
+      type: 'read',
+      content: (
+        <div className="space-y-6">
+           <p className="text-gray-300">The web is built on links. Markdown makes them easy.</p>
+           <div className="bg-[#161b22] border border-github-border rounded-xl p-5">
+             <table className="w-full text-sm text-left">
+               <thead>
+                 <tr className="border-b border-gray-700">
+                   <th className="py-2 text-gray-200">Type</th>
+                   <th className="py-2 text-gray-200">Syntax</th>
+                 </tr>
+               </thead>
+               <tbody className="text-gray-400">
+                 <tr className="border-b border-gray-800">
+                   <td className="py-2">Link</td>
+                   <td className="font-mono text-xs text-blue-300">[Title](url)</td>
+                 </tr>
+                 <tr className="border-b border-gray-800">
+                   <td className="py-2">Image</td>
+                   <td className="font-mono text-xs text-purple-300">![Alt Text](image-url)</td>
+                 </tr>
+                 <tr>
+                   <td className="py-2">Image Link</td>
+                   <td className="font-mono text-xs text-green-300">[![Alt](img)](link)</td>
+                 </tr>
+               </tbody>
+             </table>
+           </div>
+        </div>
+      )
+    },
+    {
+      id: 'md-4',
+      title: "Task Lists & Diagrams",
+      type: 'read',
+      content: (
+        <div className="space-y-6">
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+             <div>
+                <h4 className="font-bold text-gray-200 mb-4">Task Lists</h4>
+                <div className="bg-[#161b22] p-4 rounded-xl border border-github-border">
+                   <pre className="text-xs font-mono text-gray-400 mb-4">
+- [x] Completed task<br/>
+- [ ] Pending task
+                   </pre>
+                   {/* Checkboxes visualization code */}
+                   <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                         <input type="checkbox" checked readOnly className="checked:bg-blue-500" /> 
+                         <span className="text-gray-400 text-sm line-through">Completed task</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                         <input type="checkbox" readOnly /> 
+                         <span className="text-gray-400 text-sm">Pending task</span>
+                      </div>
+                   </div>
+                </div>
+             </div>
+             <div>
+               <h4 className="font-bold text-gray-200 mb-4">Mermaid Diagrams</h4>
+               <p className="text-xs text-gray-400 mb-2">GitHub supports Mermaid.js for diagrams!</p>
+               <pre className="text-xs bg-black/50 p-4 rounded font-mono text-gray-300 border border-gray-800">
+{`\`\`\`mermaid
+graph TD;
+    A-->B;
+    A-->C;
+\`\`\``}
+               </pre>
+             </div>
+           </div>
+        </div>
+      )
+    },
+    {
+      id: 'md-5',
       title: "Prettifying Code",
       type: 'read',
       content: (
@@ -89,7 +178,7 @@ function hello() {
       )
     },
     {
-      id: 'md-4',
+      id: 'md-6',
       title: "Tables & Layouts",
       type: 'read',
       content: (
@@ -99,18 +188,18 @@ function hello() {
                     GitHub READMEs don't support flexbox or CSS grid, but you can use <b>HTML Tables</b> to create side-by-side layouts.
                  </p>
                  <pre className="text-xs bg-[#0d1117] p-4 rounded border border-github-border text-gray-400 font-mono overflow-x-auto">
-&lt;table&gt;
-  &lt;tr&gt;
-    &lt;td width="50%"&gt;
-      &lt;h3&gt;My Tech Stack&lt;/h3&gt;
+{`<table>
+  <tr>
+    <td width="50%">
+      <h3>My Tech Stack</h3>
       ...
-    &lt;/td&gt;
-    &lt;td width="50%"&gt;
-      &lt;h3&gt;About Me&lt;/h3&gt;
+    </td>
+    <td width="50%">
+      <h3>About Me</h3>
       ...
-    &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/table&gt;
+    </td>
+  </tr>
+</table>`}
                  </pre>
               </div>
         </div>

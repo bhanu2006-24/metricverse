@@ -92,6 +92,46 @@ export const MathLatex: Course = {
       )
     },
     {
+      id: 'math-4',
+      title: "Matrices & Arrays",
+      type: 'read',
+      content: (
+         <div className="space-y-6">
+            <p className="text-gray-300">Matrices are essential for linear algebra representation.</p>
+            <div className="bg-[#161b22] border border-github-border rounded-xl p-6">
+               <h4 className="text-white font-bold mb-4">Matrix Syntax</h4>
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div>
+                     <p className="text-xs text-gray-500 mb-2">Code:</p>
+                     <pre className="text-xs bg-black/50 p-3 rounded font-mono text-gray-300">
+{`$$
+\\begin{bmatrix}
+1 & 2 & 3 \\\\
+4 & 5 & 6 \\\\
+7 & 8 & 9
+\\end{bmatrix}
+$$`}
+                     </pre>
+                  </div>
+                  <div>
+                     <p className="text-xs text-gray-500 mb-2">Result:</p>
+                     <div className="bg-black/30 p-4 rounded text-white flex justify-center h-full items-center">
+                        <LatexDisplay 
+                           expression={`\\begin{bmatrix}
+1 & 2 & 3 \\\\
+4 & 5 & 6 \\\\
+7 & 8 & 9
+\\end{bmatrix}`} 
+                           displayMode={true} 
+                        />
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      )
+    },
+    {
       id: 'math-practice',
       title: "Equation Lab",
       type: 'practice',

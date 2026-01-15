@@ -17,8 +17,23 @@ export const GitGithubPro: Course = {
               <div className="relative z-10">
                  <h3 className="text-2xl font-bold text-white mb-2">The DAG</h3>
                  <p className="text-blue-200/80 max-w-xl">
-                    Git is not just specific commands; it's a Directed Acyclic Graph (DAG) of commits. Understanding the "tree" structure is key.
+                    Git is not just specific commands; it's a Directed Acyclic Graph (DAG) of commits. Every commit is a snapshot of your project in time, pointing to its parent. Branching is simply moving a pointer to a specific commit.
                  </p>
+              </div>
+           </div>
+           
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-[#161b22] p-6 rounded-xl border border-github-border">
+                 <h4 className="text-white font-bold mb-2">Blob</h4>
+                 <p className="text-xs text-gray-400">The file content itself.</p>
+              </div>
+              <div className="bg-[#161b22] p-6 rounded-xl border border-github-border">
+                 <h4 className="text-white font-bold mb-2">Tree</h4>
+                 <p className="text-xs text-gray-400">The directory structure mapping names to blobs.</p>
+              </div>
+              <div className="bg-[#161b22] p-6 rounded-xl border border-github-border">
+                 <h4 className="text-white font-bold mb-2">Commit</h4>
+                 <p className="text-xs text-gray-400">A snapshot of the tree with metadata (author, parent).</p>
               </div>
            </div>
         </div>
@@ -67,6 +82,78 @@ export const GitGithubPro: Course = {
                  </div>
               </div>
            </div>
+      )
+    },
+    {
+      id: 'git-4',
+      title: "Branching & Merging",
+      type: 'read',
+      content: (
+        <div className="space-y-8">
+            <p className="text-gray-300">Branches are cheap. Use them for everything: bug fixes, features, experiments.</p>
+            <div className="grid gap-4">
+                 <div className="group bg-[#161b22] border border-github-border rounded-xl p-5">
+                    <div className="flex justify-between items-center mb-2">
+                       <code className="text-blue-400 font-bold">git checkout -b feature-x</code>
+                    </div>
+                    <p className="text-gray-400 text-sm">Create and switch to a new branch.</p>
+                 </div>
+                 <div className="group bg-[#161b22] border border-github-border rounded-xl p-5">
+                    <div className="flex justify-between items-center mb-2">
+                       <code className="text-purple-400 font-bold">git merge feature-x</code>
+                    </div>
+                    <p className="text-gray-400 text-sm">Merge 'feature-x' into your current branch (usually main).</p>
+                 </div>
+            </div>
+        </div>
+      )
+    },
+    {
+       id: 'git-5',
+       title: "Undo & Stash",
+       type: 'read',
+       content: (
+        <div className="space-y-8">
+           <h4 className="text-white font-bold">The "Oh Sc*t" Commands</h4>
+           <div className="bg-[#161b22] border border-github-border rounded-xl p-6 space-y-4">
+              <div>
+                 <code className="text-red-400 font-bold">git reset --soft HEAD~1</code>
+                 <p className="text-gray-400 text-sm mt-1">Undo the last commit but keep changes in your files. (Safe)</p>
+              </div>
+              <div className="border-t border-github-border pt-4">
+                 <code className="text-red-400 font-bold">git reset --hard HEAD~1</code>
+                 <p className="text-gray-400 text-sm mt-1">Undo the last commit and DESTROY changes. (Dangerous)</p>
+              </div>
+              <div className="border-t border-github-border pt-4">
+                 <code className="text-yellow-400 font-bold">git stash</code>
+                 <p className="text-gray-400 text-sm mt-1">Save uncommitted changes to a temporary storage.</p>
+              </div>
+              <div>
+                 <code className="text-yellow-400 font-bold">git stash pop</code>
+                 <p className="text-gray-400 text-sm mt-1">Bring back stashed changes.</p>
+              </div>
+           </div>
+        </div>
+       )
+    },
+    {
+      id: 'git-6',
+      title: "Interactive Rebase",
+      type: 'read',
+      content: (
+         <div className="space-y-6">
+            <p className="text-gray-300">Clean up your commit history before merging. Make it look like you got it right the first time.</p>
+            <div className="bg-black/50 p-6 rounded-xl border border-github-border font-mono text-xs">
+               <div className="text-gray-500">Running: <span className="text-white">git rebase -i HEAD~3</span></div>
+               <div className="mt-4 space-y-2">
+                  <div className="text-blue-300">pick a1b2c3d Fix layout bug</div>
+                  <div className="text-purple-300">squash e4f5g6h Fix layout bug again</div>
+                  <div className="text-purple-300">squash h7i8j9k Final fix I swear</div>
+               </div>
+               <div className="mt-4 text-green-400">Result: 1 Clean Commit</div>
+            </div>
+            <p className="text-red-400 text-xs font-bold uppercase">⚠️ Never rebase public branches shared with others!</p>
+         </div>
       )
     },
     {
