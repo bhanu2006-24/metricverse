@@ -9,152 +9,374 @@ export const GitGithubPro: Course = {
   lessons: [
     {
       id: 'git-1',
-      title: "Think in Graphs",
+      title: "1. The Philosophy (DAG)",
       type: 'read',
       content: (
-        <div className="space-y-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
-           <div className="relative overflow-hidden bg-gradient-to-br from-blue-900/40 to-github-dark border border-blue-500/30 rounded-3xl p-8">
-              <div className="relative z-10">
-                 <h3 className="text-2xl font-bold text-white mb-2">The DAG</h3>
-                 <p className="text-blue-200/80 max-w-xl">
-                    Git is not just specific commands; it's a Directed Acyclic Graph (DAG) of commits. Every commit is a snapshot of your project in time, pointing to its parent. Branching is simply moving a pointer to a specific commit.
-                 </p>
-              </div>
-           </div>
-           
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-[#161b22] p-6 rounded-xl border border-github-border">
-                 <h4 className="text-white font-bold mb-2">Blob</h4>
-                 <p className="text-xs text-gray-400">The file content itself.</p>
-              </div>
-              <div className="bg-[#161b22] p-6 rounded-xl border border-github-border">
-                 <h4 className="text-white font-bold mb-2">Tree</h4>
-                 <p className="text-xs text-gray-400">The directory structure mapping names to blobs.</p>
-              </div>
-              <div className="bg-[#161b22] p-6 rounded-xl border border-github-border">
-                 <h4 className="text-white font-bold mb-2">Commit</h4>
-                 <p className="text-xs text-gray-400">A snapshot of the tree with metadata (author, parent).</p>
-              </div>
+        <div className="space-y-4">
+           <p className="text-gray-300">
+             Git is a Directed Acyclic Graph (DAG) of commits. Every commit is a full snapshot of the project, pointing to its parent(s).
+           </p>
+           <div className="bg-[#161b22] p-4 rounded-xl border border-github-border">
+              <p className="text-gray-400 text-sm">"Branching is just moving a pointer. That's why it's so fast."</p>
            </div>
         </div>
       )
     },
     {
       id: 'git-2',
-      title: "Golden Commands",
+      title: "2. Configuration (Identity)",
       type: 'read',
       content: (
-        <div className="space-y-8">
-              <h4 className="text-white font-bold uppercase tracking-widest text-xs border-b border-gray-800 pb-2">Top 3 Daily Commands</h4>
-              <div className="grid gap-4">
-                 <div className="group bg-[#161b22] border border-github-border rounded-xl p-5 hover:border-blue-500 transition-all">
-                    <div className="flex justify-between items-center mb-2">
-                       <code className="text-blue-400 font-bold">git status</code>
-                       <span className="text-[10px] uppercase font-bold text-gray-600 bg-gray-900 px-2 py-1 rounded">Observation</span>
-                    </div>
-                    <p className="text-gray-400 text-sm">Always run this first. Know your state.</p>
-                 </div>
-                 <div className="group bg-[#161b22] border border-github-border rounded-xl p-5 hover:border-green-500 transition-all">
-                    <div className="flex justify-between items-center mb-2">
-                       <code className="text-green-400 font-bold">git commit -am "msg"</code>
-                       <span className="text-[10px] uppercase font-bold text-gray-600 bg-gray-900 px-2 py-1 rounded">Action</span>
-                    </div>
-                    <p className="text-gray-400 text-sm">Add modified files and commit in one go.</p>
-                 </div>
-              </div>
+        <div className="space-y-4">
+           <p className="text-gray-300">Tell Git who you are. This metadata is baked into every commit.</p>
+           <div className="bg-[#161b22] p-4 rounded-lg">
+              <code className="text-blue-400 block mb-2">git config --global user.name "John Doe"</code>
+              <code className="text-blue-400 block">git config --global user.email "john@example.com"</code>
+           </div>
         </div>
       )
     },
     {
       id: 'git-3',
-      title: "Collaboration Cycle",
+      title: "3. Initialization",
       type: 'read',
       content: (
-           <div className="bg-[#050505] border border-github-border rounded-2xl p-8 text-center">
-              <h4 className="text-gray-500 uppercase tracking-widest text-xs font-bold mb-8">The Loop</h4>
-              <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-sm">
-                 <div className="flex flex-col items-center gap-2">
-                    <span className="font-bold text-gray-300">Local</span>
-                 </div>
-                 <div className="h-0.5 w-12 bg-gray-700 relative"><span className="absolute -top-3 left-1/2 -translate-x-1/2 text-[10px] text-gray-500">PUSH</span></div>
-                 <div className="flex flex-col items-center gap-2">
-                    <span className="font-bold text-blue-300">Remote</span>
-                 </div>
-              </div>
-           </div>
-      )
-    },
-    {
-      id: 'git-4',
-      title: "Branching & Merging",
-      type: 'read',
-      content: (
-        <div className="space-y-8">
-            <p className="text-gray-300">Branches are cheap. Use them for everything: bug fixes, features, experiments.</p>
-            <div className="grid gap-4">
-                 <div className="group bg-[#161b22] border border-github-border rounded-xl p-5">
-                    <div className="flex justify-between items-center mb-2">
-                       <code className="text-blue-400 font-bold">git checkout -b feature-x</code>
-                    </div>
-                    <p className="text-gray-400 text-sm">Create and switch to a new branch.</p>
-                 </div>
-                 <div className="group bg-[#161b22] border border-github-border rounded-xl p-5">
-                    <div className="flex justify-between items-center mb-2">
-                       <code className="text-purple-400 font-bold">git merge feature-x</code>
-                    </div>
-                    <p className="text-gray-400 text-sm">Merge 'feature-x' into your current branch (usually main).</p>
-                 </div>
+         <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-4">
+               <div className="bg-[#161b22] p-4 rounded-lg">
+                  <h4 className="text-white font-bold mb-2">New Project</h4>
+                  <code className="text-green-400">git init</code>
+                  <p className="text-xs text-gray-500 mt-2">Creates .git folder</p>
+               </div>
+               <div className="bg-[#161b22] p-4 rounded-lg">
+                  <h4 className="text-white font-bold mb-2">Existing</h4>
+                  <code className="text-green-400">git clone [url]</code>
+                  <p className="text-xs text-gray-500 mt-2">Downloads repo</p>
+               </div>
             </div>
-        </div>
+         </div>
       )
     },
     {
-       id: 'git-5',
-       title: "Undo & Stash",
+       id: 'git-4',
+       title: "4. The Staging Area",
        type: 'read',
        content: (
-        <div className="space-y-8">
-           <h4 className="text-white font-bold">The "Oh Sc*t" Commands</h4>
-           <div className="bg-[#161b22] border border-github-border rounded-xl p-6 space-y-4">
-              <div>
-                 <code className="text-red-400 font-bold">git reset --soft HEAD~1</code>
-                 <p className="text-gray-400 text-sm mt-1">Undo the last commit but keep changes in your files. (Safe)</p>
-              </div>
-              <div className="border-t border-github-border pt-4">
-                 <code className="text-red-400 font-bold">git reset --hard HEAD~1</code>
-                 <p className="text-gray-400 text-sm mt-1">Undo the last commit and DESTROY changes. (Dangerous)</p>
-              </div>
-              <div className="border-t border-github-border pt-4">
-                 <code className="text-yellow-400 font-bold">git stash</code>
-                 <p className="text-gray-400 text-sm mt-1">Save uncommitted changes to a temporary storage.</p>
-              </div>
-              <div>
-                 <code className="text-yellow-400 font-bold">git stash pop</code>
-                 <p className="text-gray-400 text-sm mt-1">Bring back stashed changes.</p>
-              </div>
-           </div>
-        </div>
+          <div className="space-y-4">
+             <p className="text-gray-300">Git has three states: Working Directory, Staging Area (Index), and Repository.</p>
+             <div className="bg-[#161b22] p-4 rounded-lg flex items-center gap-4">
+                <code className="text-purple-400">git add .</code>
+                <span className="text-gray-400 text-sm">Moves changes to Staging.</span>
+             </div>
+          </div>
        )
     },
     {
-      id: 'git-6',
-      title: "Interactive Rebase",
-      type: 'read',
-      content: (
-         <div className="space-y-6">
-            <p className="text-gray-300">Clean up your commit history before merging. Make it look like you got it right the first time.</p>
-            <div className="bg-black/50 p-6 rounded-xl border border-github-border font-mono text-xs">
-               <div className="text-gray-500">Running: <span className="text-white">git rebase -i HEAD~3</span></div>
-               <div className="mt-4 space-y-2">
-                  <div className="text-blue-300">pick a1b2c3d Fix layout bug</div>
-                  <div className="text-purple-300">squash e4f5g6h Fix layout bug again</div>
-                  <div className="text-purple-300">squash h7i8j9k Final fix I swear</div>
-               </div>
-               <div className="mt-4 text-green-400">Result: 1 Clean Commit</div>
-            </div>
-            <p className="text-red-400 text-xs font-bold uppercase">⚠️ Never rebase public branches shared with others!</p>
-         </div>
-      )
+       id: 'git-5',
+       title: "5. Commits (Snapshots)",
+       type: 'read',
+       content: (
+          <div className="space-y-4">
+             <p className="text-gray-300">A commit is a permanent snapshot.</p>
+             <div className="bg-[#161b22] p-4 rounded-lg">
+                <code className="text-yellow-400 block mb-2">git commit -m "feat: add login"</code>
+                <p className="text-xs text-gray-500">Always use descriptive messages. Present tense, imperative.</p>
+             </div>
+          </div>
+       )
+    },
+    {
+       id: 'git-6',
+       title: "6. Status & Diff",
+       type: 'read',
+       content: (
+          <div className="space-y-4">
+             <div className="bg-[#161b22] p-4 rounded-lg mb-2">
+                <code className="text-blue-400 font-bold block mb-1">git status</code>
+                <p className="text-xs text-gray-400">Your GPS. Run this constantly.</p>
+             </div>
+             <div className="bg-[#161b22] p-4 rounded-lg">
+                <code className="text-blue-400 font-bold block mb-1">git diff</code>
+                <p className="text-xs text-gray-400">See exactly what changed line-by-line.</p>
+             </div>
+          </div>
+       )
+    },
+    {
+       id: 'git-7',
+       title: "7. Branching",
+       type: 'read',
+       content: (
+          <div className="space-y-4">
+             <p className="text-gray-300">Branches are cheap pointers. Create them for everything.</p>
+             <div className="bg-[#161b22] p-4 rounded-lg">
+                <code className="text-green-400 block mb-2">git branch feature-x</code>
+                <code className="text-green-400 block">git checkout feature-x</code>
+             </div>
+          </div>
+       )
+    },
+    {
+       id: 'git-8',
+       title: "8. Merging",
+       type: 'read',
+       content: (
+          <div className="space-y-4">
+             <p className="text-gray-300">Bringing history back together.</p>
+             <div className="bg-[#161b22] p-4 rounded-lg">
+                <code className="text-purple-400 mb-2 block">git merge feature-x</code>
+                <p className="text-xs text-gray-500">Merges feature-x into current branch. Creates a merge commit if necessary.</p>
+             </div>
+          </div>
+       )
+    },
+    {
+       id: 'git-9',
+       title: "9. Remote Repositories",
+       type: 'read',
+       content: (
+          <div className="space-y-4">
+             <p className="text-gray-300">Linking your local computer to GitHub.</p>
+             <div className="bg-[#161b22] p-4 rounded-lg">
+                <code className="text-gray-300">git remote add origin https://github.com/user/repo.git</code>
+             </div>
+          </div>
+       )
+    },
+    {
+       id: 'git-10',
+       title: "10. Push & Pull",
+       type: 'read',
+       content: (
+          <div className="space-y-4">
+             <div className="grid grid-cols-2 gap-4">
+                <div className="bg-[#161b22] p-4 rounded-lg">
+                   <h4 className="text-white font-bold mb-2">Push</h4>
+                   <code className="text-blue-400 text-xs">git push -u origin main</code>
+                   <p className="text-xs text-gray-500 mt-2">Uploads structure</p>
+                </div>
+                <div className="bg-[#161b22] p-4 rounded-lg">
+                   <h4 className="text-white font-bold mb-2">Pull</h4>
+                   <code className="text-blue-400 text-xs">git pull</code>
+                   <p className="text-xs text-gray-500 mt-2">Downloads & Merges</p>
+                </div>
+             </div>
+          </div>
+       )
+    },
+    {
+       id: 'git-11',
+       title: "11. Fetch vs Pull",
+       type: 'read',
+       content: (
+          <div className="space-y-4">
+             <p className="text-gray-300"><code className="text-white">git pull</code> is essentially <code className="text-white">git fetch</code> + <code className="text-white">git merge</code>.</p>
+             <div className="bg-[#161b22] p-4 rounded-lg border border-yellow-500/30">
+                <p className="text-sm text-yellow-200">Use <code className="font-bold">git fetch</code> to download standard updates without merging them into your work yet. Safer.</p>
+             </div>
+          </div>
+       )
+    },
+    {
+       id: 'git-12',
+       title: "12. Reset",
+       type: 'read',
+       content: (
+          <div className="space-y-4">
+             <p className="text-gray-300">Moving the HEAD pointer backward.</p>
+             <div className="space-y-2 text-xs">
+                <div className="bg-[#161b22] p-3 rounded flex justify-between">
+                   <code className="text-green-400">--soft</code>
+                   <span className="text-gray-400">Keeps changes in Staging.</span>
+                </div>
+                <div className="bg-[#161b22] p-3 rounded flex justify-between">
+                   <code className="text-yellow-400">--mixed</code>
+                   <span className="text-gray-400">Keeps changes in Working Dir. (Default)</span>
+                </div>
+                <div className="bg-[#161b22] p-3 rounded flex justify-between border border-red-900/50">
+                   <code className="text-red-400">--hard</code>
+                   <span className="text-gray-400">DESTROYS changes. Dangerous.</span>
+                </div>
+             </div>
+          </div>
+       )
+    },
+    {
+       id: 'git-13',
+       title: "13. Revert",
+       type: 'read',
+       content: (
+          <div className="space-y-4">
+             <p className="text-gray-300">The safe way to undo shared history. Creates a new opposite commit.</p>
+             <div className="bg-[#161b22] p-4 rounded-lg">
+                <code className="text-blue-400">git revert [commit-hash]</code>
+             </div>
+          </div>
+       )
+    },
+    {
+       id: 'git-14',
+       title: "14. Stash",
+       type: 'read',
+       content: (
+          <div className="space-y-4">
+             <p className="text-gray-300">Save uncommitted work for later. Like a clipboard for your files.</p>
+             <div className="bg-[#161b22] p-4 rounded-lg space-y-2">
+                <code className="block text-gray-300">git stash</code>
+                <code className="block text-gray-300">git stash pop</code>
+                <code className="block text-gray-300">git stash list</code>
+             </div>
+          </div>
+       )
+    },
+    {
+       id: 'git-15',
+       title: "15. Clean",
+       type: 'read',
+       content: (
+          <div className="space-y-4">
+             <p className="text-gray-300">Remove untracked files.</p>
+             <div className="bg-[#161b22] p-4 rounded-lg">
+                <code className="text-red-400">git clean -fd</code>
+                <p className="text-xs text-gray-500 mt-2">-f (force), -d (directories)</p>
+             </div>
+          </div>
+       )
+    },
+    {
+       id: 'git-16',
+       title: "16. Cherry-pick",
+       type: 'read',
+       content: (
+          <div className="space-y-4">
+             <p className="text-gray-300">Pick specific commits from other branches.</p>
+             <div className="bg-[#161b22] p-4 rounded-lg border border-purple-500/30">
+                <code className="text-purple-400">git cherry-pick [hash]</code>
+                <p className="text-xs text-gray-400 mt-2">Useful for hotfixes.</p>
+             </div>
+          </div>
+       )
+    },
+    {
+       id: 'git-17',
+       title: "17. Rebase",
+       type: 'read',
+       content: (
+          <div className="space-y-4">
+             <p className="text-gray-300">Linearize history by moving commits.</p>
+             <div className="bg-[#161b22] p-4 rounded-lg">
+                <code className="text-yellow-400">git rebase main</code>
+                <p className="text-xs text-gray-500 mt-2">Replays current branch commits on top of main.</p>
+             </div>
+             <p className="text-red-400 text-xs font-bold uppercase">⚠️ Do not rebase public branches.</p>
+          </div>
+       )
+    },
+    {
+       id: 'git-18',
+       title: "18. Interactive Rebase",
+       type: 'read',
+       content: (
+          <div className="space-y-4">
+             <p className="text-gray-300">Rewrite history: squash, edit, reword, drop.</p>
+             <div className="bg-[#161b22] p-4 rounded-lg">
+                <code className="text-yellow-400">git rebase -i HEAD~3</code>
+                <p className="text-xs text-gray-500 mt-2">Opens editor to modify last 3 commits.</p>
+             </div>
+          </div>
+       )
+    },
+    {
+       id: 'git-19',
+       title: "19. Bisect",
+       type: 'read',
+       content: (
+          <div className="space-y-4">
+             <p className="text-gray-300">Binary search to find which commit introduced a bug.</p>
+             <div className="bg-[#161b22] p-4 rounded-lg text-xs space-y-1">
+                <code className="block text-gray-300">git bisect start</code>
+                <code className="block text-green-400">git bisect good [hash]</code>
+                <code className="block text-red-400">git bisect bad [hash]</code>
+             </div>
+          </div>
+       )
+    },
+    {
+       id: 'git-20',
+       title: "20. Blame",
+       type: 'read',
+       content: (
+          <div className="space-y-4">
+             <p className="text-gray-300">See who wrote which line.</p>
+             <div className="bg-[#161b22] p-4 rounded-lg">
+                <code className="text-blue-400">git blame filename.ts</code>
+             </div>
+          </div>
+       )
+    },
+    {
+       id: 'git-21',
+       title: "21. Submodules",
+       type: 'read',
+       content: (
+          <div className="space-y-4">
+             <p className="text-gray-300">Repos inside repos.</p>
+             <div className="bg-[#161b22] p-4 rounded-lg">
+                <code className="text-gray-300">git submodule add [url]</code>
+                <p className="text-xs text-gray-500 mt-2">Complicated but powerful.</p>
+             </div>
+          </div>
+       )
+    },
+    {
+       id: 'git-22',
+       title: "22. Git Hooks",
+       type: 'read',
+       content: (
+          <div className="space-y-4">
+             <p className="text-gray-300">Scripts that run automatically.</p>
+             <div className="grid grid-cols-2 gap-4 text-xs font-mono">
+                <div className="bg-[#161b22] p-2 rounded border border-gray-700">pre-commit</div>
+                <div className="bg-[#161b22] p-2 rounded border border-gray-700">pre-push</div>
+                <div className="bg-[#161b22] p-2 rounded border border-gray-700">commit-msg</div>
+             </div>
+          </div>
+       )
+    },
+    {
+       id: 'git-23',
+       title: "23. Pull Requests",
+       type: 'read',
+       content: (
+          <div className="space-y-4">
+             <p className="text-gray-300">The heart of GitHub collaboration.</p>
+             <ul className="text-sm text-gray-400 list-disc list-inside">
+                <li>Review code</li>
+                <li>Discuss changes</li>
+                <li>CI/CD checks pass</li>
+                <li>Merge approval</li>
+             </ul>
+          </div>
+       )
+    },
+    {
+       id: 'git-24',
+       title: "24. GitHub Actions",
+       type: 'read',
+       content: (
+          <div className="space-y-4">
+             <p className="text-gray-300">Automate your workflow. CI/CD pipelines.</p>
+             <div className="bg-[#161b22] p-4 rounded-lg">
+                <p className="text-xs text-gray-500 mb-2">.github/workflows/main.yml</p>
+                <div className="bg-black/50 p-2 rounded text-xs font-mono text-blue-300">
+                   on: [push]<br/>
+                   jobs:<br/>
+                   &nbsp;&nbsp;build:<br/>
+                   &nbsp;&nbsp;&nbsp;&nbsp;runs-on: ubuntu-latest
+                </div>
+             </div>
+          </div>
+       )
     },
     {
       id: 'git-practice',

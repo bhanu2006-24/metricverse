@@ -30,17 +30,17 @@ const MetricEditorModal: React.FC<MetricEditorModalProps> = ({ isOpen, onClose, 
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-100 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={onClose}></div>
-      <div className="relative bg-[#0d1117] w-full max-w-4xl rounded-2xl border border-[#30363d] shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-in zoom-in-95 duration-200">
+      <div className="relative bg-github-dark w-full max-w-4xl rounded-2xl border border-github-border shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-in zoom-in-95 duration-200">
         
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-[#30363d] bg-[#161b22]">
+        <div className="flex items-center justify-between p-6 border-b border-github-border bg-github-secondary">
           <div>
              <h3 className="text-xl font-bold text-white mb-1">{title}</h3>
              <p className="text-xs text-gray-500 font-mono">customize & export</p>
           </div>
-          <button onClick={onClose} className="p-2 hover:bg-[#30363d] rounded-lg transition-colors">
+          <button onClick={onClose} className="p-2 hover:bg-github-border rounded-lg transition-colors">
             <svg className="w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
         </div>
@@ -49,19 +49,19 @@ const MetricEditorModal: React.FC<MetricEditorModalProps> = ({ isOpen, onClose, 
         <div className="flex-1 overflow-hidden flex flex-col md:flex-row">
             
             {/* Sidebar Controls */}
-            <div className="w-full md:w-64 bg-[#0d1117] border-r border-[#30363d] p-4 space-y-6 flex-shrink-0">
+            <div className="w-full md:w-64 bg-github-dark border-r border-github-border p-4 space-y-6 shrink-0">
                 <div>
                     <label className="text-[10px] uppercase font-bold text-gray-500 tracking-widest block mb-3">View Mode</label>
-                    <div className="flex bg-[#161b22] p-1 rounded-lg border border-[#30363d]">
+                    <div className="flex bg-github-secondary p-1 rounded-lg border border-github-border">
                         <button 
                           onClick={() => setActiveTab('preview')}
-                          className={`flex-1 py-2 text-xs font-bold rounded-md transition-all ${activeTab === 'preview' ? 'bg-[#58a6ff]/20 text-[#58a6ff]' : 'text-gray-400 hover:text-white'}`}
+                          className={`flex-1 py-2 text-xs font-bold rounded-md transition-all ${activeTab === 'preview' ? 'bg-github-accent/20 text-github-accent' : 'text-gray-400 hover:text-white'}`}
                         >
                             Preview
                         </button>
                         <button 
                           onClick={() => setActiveTab('code')}
-                          className={`flex-1 py-2 text-xs font-bold rounded-md transition-all ${activeTab === 'code' ? 'bg-[#58a6ff]/20 text-[#58a6ff]' : 'text-gray-400 hover:text-white'}`}
+                          className={`flex-1 py-2 text-xs font-bold rounded-md transition-all ${activeTab === 'code' ? 'bg-github-accent/20 text-github-accent' : 'text-gray-400 hover:text-white'}`}
                         >
                             Code
                         </button>
@@ -89,16 +89,16 @@ const MetricEditorModal: React.FC<MetricEditorModalProps> = ({ isOpen, onClose, 
                     <textarea 
                         value={code}
                         onChange={(e) => setCode(e.target.value)}
-                        className="flex-1 w-full bg-[#0d1117] text-gray-300 font-mono text-sm leading-relaxed p-6 outline-none resize-none"
+                        className="flex-1 w-full bg-github-dark text-gray-300 font-mono text-sm leading-relaxed p-6 outline-none resize-none"
                         spellCheck={false}
                     />
                 )}
 
                 {/* Footer Actions */}
-                <div className="p-4 border-t border-[#30363d] bg-[#161b22] flex justify-end gap-3">
+                <div className="p-4 border-t border-github-border bg-github-secondary flex justify-end gap-3">
                     <button 
                         onClick={() => setCode(svgContent)} // Reset
-                        className="px-4 py-2 rounded-lg text-xs font-bold text-gray-400 hover:text-white hover:bg-[#30363d] transition-colors"
+                        className="px-4 py-2 rounded-lg text-xs font-bold text-gray-400 hover:text-white hover:bg-github-border transition-colors"
                     >
                         Reset
                     </button>

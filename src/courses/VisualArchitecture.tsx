@@ -13,16 +13,16 @@ export const VisualArchitecture: Course = {
       type: 'read',
       content: (
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <p className="text-[#8b949e]">
+          <p className="text-github-muted">
             Consistency in color and style establishes professionalism. Stick to a theme.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div className="bg-[#161b22] p-6 rounded-2xl border border-github-border text-center group hover:border-[#bc8cff] transition-colors">
-              <div className="w-16 h-16 mx-auto rounded-full bg-linear-to-br from-[#bc8cff] to-[#58a6ff] mb-4 group-hover:scale-110 transition-transform"></div>
+            <div className="bg-github-secondary p-6 rounded-2xl border border-github-border text-center group hover:border-[#bc8cff] transition-colors">
+              <div className="w-16 h-16 mx-auto rounded-full bg-linear-to-br from-[#bc8cff] to-github-accent mb-4 group-hover:scale-110 transition-transform"></div>
               <h4 className="text-white font-bold mb-2">Modern</h4>
             </div>
-            <div className="bg-[#161b22] p-6 rounded-2xl border border-github-border text-center group hover:border-[#3fb950] transition-colors">
-              <div className="w-16 h-16 mx-auto rounded-full bg-[#0d1117] border-2 border-[#3fb950] mb-4 font-mono flex items-center justify-center text-[#3fb950] text-xs">
+            <div className="bg-github-secondary p-6 rounded-2xl border border-github-border text-center group hover:border-[#3fb950] transition-colors">
+              <div className="w-16 h-16 mx-auto rounded-full bg-github-dark border-2 border-[#3fb950] mb-4 font-mono flex items-center justify-center text-[#3fb950] text-xs">
                  &gt;_
               </div>
               <h4 className="text-white font-bold mb-2">Hacker</h4>
@@ -36,8 +36,8 @@ export const VisualArchitecture: Course = {
       title: "Color Harmony",
       type: 'read',
       content: (
-          <div className="bg-[#161b22] p-8 rounded-2xl border border-github-border">
-            <h4 className="text-[#fff] font-black text-xs uppercase mb-6 tracking-widest">Theme Harmony Rule</h4>
+          <div className="bg-github-secondary p-8 rounded-2xl border border-github-border">
+            <h4 className="text-white font-black text-xs uppercase mb-6 tracking-widest">Theme Harmony Rule</h4>
             <div className="flex flex-col gap-4">
                <div className="flex items-center gap-4">
                  <div className="w-8 h-8 rounded-lg bg-blue-500"></div>

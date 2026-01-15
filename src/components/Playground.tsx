@@ -87,7 +87,7 @@ const Playground: React.FC<PlaygroundProps> = ({ mode, initialCode = '', classNa
               <textarea 
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                className="w-full h-full bg-[#0d1117] p-4 font-mono text-sm text-gray-300 outline-none resize-none focus:bg-[#161b22] transition-colors"
+                className="w-full h-full bg-github-dark p-4 font-mono text-sm text-gray-300 outline-none resize-none focus:bg-github-secondary transition-colors"
                 spellCheck={false}
               />
               <div className="absolute top-2 right-2 text-[10px] text-gray-600 pointer-events-none group-hover:text-gray-500 transition-colors">Editable</div>

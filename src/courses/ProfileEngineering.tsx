@@ -45,7 +45,7 @@ export const ProfileEngineering: Course = {
               "Add a link to your portfolio."
             ].map((text, i) => (
               <label key={i} className="flex items-center gap-4 bg-[#161b22] px-6 py-4 rounded-xl border border-github-border cursor-pointer hover:border-github-accent transition-colors group">
-                <input type="checkbox" className="w-5 h-5 rounded border-gray-600 text-github-accent focus:ring-offset-[#0d1117]" />
+                <input type="checkbox" className="w-5 h-5 rounded border-gray-600 text-github-accent focus:ring-offset-github-dark" />
                 <span className="text-sm text-gray-300 group-hover:text-white transition-colors">{text}</span>
               </label>
             ))}
@@ -57,9 +57,9 @@ export const ProfileEngineering: Course = {
       title: "The Special Repo",
       type: 'read',
       content: (
-          <div className="p-6 bg-gradient-to-r from-[#1f6feb]/10 to-[#238636]/10 border border-github-border rounded-2xl">
-             <h4 className="text-[#fff] font-bold mb-2">💡 Pro Tip</h4>
-             <p className="text-sm text-[#8b949e]">
+          <div className="p-6 bg-linear-to-r from-blue-600/10 to-green-600/10 border border-github-border rounded-2xl">
+             <h4 className="text-white font-bold mb-2">💡 Pro Tip</h4>
+             <p className="text-sm text-github-muted">
                Create a repo named <code className="text-github-accent">username/username</code>. 
                This is your <strong>Secret Profile README</strong>.
              </p>

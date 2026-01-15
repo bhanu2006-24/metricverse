@@ -58,7 +58,7 @@ const MetricCard: React.FC<MetricCardProps> = ({ id, title, svgContent, color, o
   };
 
   return (
-    <div className="group relative bg-[#161b22]/80 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10">
+    <div className="group relative bg-github-secondary/80 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/10">
       <div className="p-4 border-b border-white/5 flex justify-between items-center bg-white/5">
         <h3 className="text-sm font-semibold text-gray-300 group-hover:text-cyan-400 transition-colors uppercase tracking-wider">{title}</h3>
         <div className="flex gap-2">
@@ -91,7 +91,7 @@ const MetricCard: React.FC<MetricCardProps> = ({ id, title, svgContent, color, o
       </div>
       
       <div className="p-6 flex items-center justify-center min-h-[200px] bg-[url('/grid.svg')] bg-center relative cursor-pointer" onClick={onEdit}>
-         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#161b22]/50 pointer-events-none"></div>
+         <div className="absolute inset-0 bg-linear-to-b from-transparent to-github-secondary/50 pointer-events-none"></div>
          {/* Hover Overlay with Edit Text */}
          <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-[2px]">
             <span className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-widest hover:bg-white/20 transform scale-90 group-hover:scale-100 transition-all">Edit Metric</span>
@@ -99,7 +99,7 @@ const MetricCard: React.FC<MetricCardProps> = ({ id, title, svgContent, color, o
          <div className="relative z-10 transform group-hover:scale-[1.02] transition-transform duration-500 [&>svg]:w-full [&>svg]:h-auto [&>svg]:block [&>svg]:max-w-full" dangerouslySetInnerHTML={{ __html: customizedSvg }} />
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+      <div className="absolute inset-x-0 bottom-0 h-1 bg-linear-to-r from-transparent via-cyan-500 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
     </div>
   );
 };

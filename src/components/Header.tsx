@@ -13,7 +13,7 @@ const Header: React.FC<HeaderProps> = ({ currentTab, onTabChange }) => {
         <div className="flex items-center gap-3 group cursor-pointer hover:opacity-80 transition-opacity" onClick={() => window.location.reload()}>
           
           <span className="text-2xl font-black bg-clip-text text-transparent bg-white tracking-tight font-sans uppercase flex items-center gap-1">
-            Metric<span className="text-[#58a6ff]">Verse</span>
+            Metric<span className="text-github-accent">Verse</span>
           </span>
         </div>
 
@@ -22,7 +22,7 @@ const Header: React.FC<HeaderProps> = ({ currentTab, onTabChange }) => {
             onClick={() => onTabChange('home')}
             className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
               currentTab === 'home'
-                ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg'
+                ? 'bg-linear-to-r from-cyan-500 to-blue-600 text-white shadow-lg'
                 : 'text-gray-400 hover:text-white hover:bg-white/5'
             }`}
           >
@@ -32,7 +32,7 @@ const Header: React.FC<HeaderProps> = ({ currentTab, onTabChange }) => {
             onClick={() => onTabChange('academy')}
             className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
               currentTab === 'academy'
-                ? 'bg-gradient-to-r from-purple-500 to-pink-600 text-white shadow-lg'
+                ? 'bg-linear-to-r from-purple-500 to-pink-600 text-white shadow-lg'
                 : 'text-gray-400 hover:text-white hover:bg-white/5'
             }`}
           >

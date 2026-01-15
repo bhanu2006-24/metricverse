@@ -23,7 +23,9 @@ const Guides: React.FC = () => {
   ];
 
   const activeCourse = courses[activeCourseIdx];
-  const activeLesson = activeCourse.lessons[activeLessonIdx];
+  // Safety check: ensure lesson index is valid for current course to prevent crashes during switching
+  const safeLessonIdx = activeLessonIdx < activeCourse.lessons.length ? activeLessonIdx : 0;
+  const activeLesson = activeCourse.lessons[safeLessonIdx];
 
   useEffect(() => {
     setActiveLessonIdx(0);
