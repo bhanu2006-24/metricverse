@@ -6,9 +6,10 @@ interface MetricCardProps {
   title: string;
   svgContent: string;
   color: string;
+  onEdit: () => void;
 }
 
-const MetricCard: React.FC<MetricCardProps> = ({ id, title, svgContent, color }) => {
+const MetricCard: React.FC<MetricCardProps> = ({ id, title, svgContent, color, onEdit }) => {
   // Replace default accent color (#58a6ff) with selected color
   // Also try to replace the green (#3fb950) if we want a full theme shift, but let's stick to accent
   const customizedSvg = React.useMemo(() => {
@@ -71,6 +72,13 @@ const MetricCard: React.FC<MetricCardProps> = ({ id, title, svgContent, color })
              )}
            </button>
            <button 
+             onClick={onEdit}
+             title="Edit & Customize"
+             className="p-1.5 rounded-lg hover:bg-white/10 text-gray-400 hover:text-white transition-colors group/edit"
+           >
+             <svg className="w-4 h-4 group-hover/edit:text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+           </button>
+           <button 
              onClick={handleDownload}
              title="Download SVG"
              className="p-1.5 rounded-lg hover:bg-white/10 text-gray-400 hover:text-white transition-colors"
@@ -80,9 +88,13 @@ const MetricCard: React.FC<MetricCardProps> = ({ id, title, svgContent, color })
         </div>
       </div>
       
-      <div className="p-6 flex items-center justify-center min-h-[200px] bg-[url('/grid.svg')] bg-center relative">
+      <div className="p-6 flex items-center justify-center min-h-[200px] bg-[url('/grid.svg')] bg-center relative cursor-pointer" onClick={onEdit}>
          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#161b22]/50 pointer-events-none"></div>
-         <div className="relative z-10 transform group-hover:scale-[1.02] transition-transform duration-500" dangerouslySetInnerHTML={{ __html: customizedSvg }} />
+         {/* Hover Overlay with Edit Text */}
+         <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-[2px]">
+            <span className="px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold uppercase tracking-widest hover:bg-white/20 transform scale-90 group-hover:scale-100 transition-all">Edit Metric</span>
+         </div>
+         <div className="relative z-10 transform group-hover:scale-[1.02] transition-transform duration-500 [&>svg]:w-full [&>svg]:h-auto [&>svg]:block [&>svg]:max-w-full" dangerouslySetInnerHTML={{ __html: customizedSvg }} />
       </div>
 
       <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>

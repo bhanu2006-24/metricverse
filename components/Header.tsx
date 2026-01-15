@@ -11,12 +11,8 @@ const Header: React.FC<HeaderProps> = ({ currentTab, onTabChange }) => {
     <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-black/50 border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         <div className="flex items-center gap-3 group cursor-pointer hover:opacity-80 transition-opacity" onClick={() => window.location.reload()}>
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-purple-600 flex items-center justify-center shadow-lg shadow-purple-500/20 group-hover:shadow-cyan-500/30 transition-shadow">
-             <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-             </svg>
-          </div>
-          <span className="text-3xl font-[900] bg-clip-text text-transparent bg-white tracking-tighter font-display uppercase italic">
+          
+          <span className="text-2xl font-black bg-clip-text text-transparent bg-white tracking-tight font-sans uppercase flex items-center gap-1">
             Metric<span className="text-[#58a6ff]">Verse</span>
           </span>
         </div>

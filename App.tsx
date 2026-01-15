@@ -1,15 +1,14 @@
-
 import React, { useState, useEffect, useMemo } from 'react';
 import Header from './components/Header';
 import InputForm from './components/InputForm';
 import MetricCard from './components/MetricCard';
 import Guides from './components/Guides';
+import MetricEditorModal from './components/MetricEditorModal';
 import { fetchGithubUser, fetchGithubRepos } from './services/githubService';
 import { GitHubUser, MetricCategory } from './types';
 import { METRIC_REGISTRY } from './metrics/registry';
 
 // Dynamic Categories to ensure we cover what's in registry
-// We used python script to categorize, so we'll expect: gamified, motion, banner, themed, intelligence
 const CATEGORIES: { id: string; label: string }[] = [
   { id: 'all', label: 'All Artifacts' },
   { id: 'intelligence', label: 'Intelligence' },
@@ -27,6 +26,8 @@ const App: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
   const [accentColor, setAccentColor] = useState('#58a6ff');
   const [searchHistory, setSearchHistory] = useState<string[]>([]);
+  // Edit Modal State
+  const [editingMetric, setEditingMetric] = useState<{ id: string; title: string; content: string } | null>(null);
   
   // Load initial history
   useEffect(() => {
@@ -177,7 +178,17 @@ const App: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
                   {filteredMetrics.map((metric, i) => (
                     <div key={metric.id} className="animate-fade-in-up" style={{ animationDelay: `${i * 50}ms` }}>
-                      <MetricCard id={metric.id} title={metric.title} svgContent={metric.generate(userData)} color={accentColor} />
+                      <MetricCard 
+                        id={metric.id} 
+                        title={metric.title} 
+                        svgContent={metric.generate(userData)} 
+                        color={accentColor}
+                        onEdit={() => setEditingMetric({ 
+                          id: metric.id, 
+                          title: metric.title, 
+                          content: metric.generate(userData) 
+                        })} 
+                      />
                     </div>
                   ))}
                   {filteredMetrics.length === 0 && (
@@ -201,6 +212,17 @@ const App: React.FC = () => {
           <Guides />
         )}
       </main>
+
+      {/* Editor Modal */}
+      {editingMetric && (
+        <MetricEditorModal 
+          isOpen={!!editingMetric}
+          onClose={() => setEditingMetric(null)}
+          svgContent={editingMetric.content}
+          title={editingMetric.title}
+          themeColor={accentColor}
+        />
+      )}
 
       <footer className="border-t border-white/5 py-12 bg-black/20">
         <div className="max-w-7xl mx-auto px-6 flex flex-col items-center text-center">
