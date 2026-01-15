@@ -11,78 +11,144 @@ const Guides: React.FC = () => {
       icon: "✍️",
       subtitle: "The language of the GitHub README",
       content: (
-        <div className="space-y-6">
-          <p className="text-[#8b949e]">Markdown allows you to create rich text for your profile. Here's the core syntax you need for Metricverse:</p>
-          <div className="bg-[#050505] p-6 rounded-2xl border border-[#30363d] font-mono text-sm space-y-4">
-            <div className="text-[#58a6ff]">### Images & Badges</div>
-            <code className="block text-[#fff] opacity-70">![Alt Text](URL_TO_SVG)</code>
-            <div className="text-[#58a6ff]">### Centering Content</div>
-            <code className="block text-[#fff] opacity-70">&lt;p align="center"&gt;<br/>  &lt;img src="SVG_URL" /&gt;<br/>&lt;/p&gt;</code>
-            <div className="text-[#58a6ff]">### Clickable Metrics</div>
-            <code className="block text-[#fff] opacity-70">[![Metric](SVG_URL)](https://github.com/USER)</code>
+        <div className="space-y-8">
+          <p className="text-[#8b949e] leading-relaxed">
+            Markdown is a lightweight markup language that you can use to add formatting elements to plaintext text documents. 
+            For GitHub profiles, it is the primary way to structure your identity.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-[#050505] p-6 rounded-2xl border border-[#30363d] space-y-4">
+              <h4 className="text-white font-bold flex items-center gap-2">
+                <span className="text-[#58a6ff]">01.</span> Structure & Layout
+              </h4>
+              <p className="text-xs text-[#8b949e]">Use HTML tables to create grid layouts for your badges and metrics.</p>
+              <pre className="text-[10px] text-gray-400 font-mono bg-[#161b22] p-3 rounded-lg overflow-x-auto">
+{`<table>
+  <tr>
+    <td width="50%">
+      <img src="..." />
+    </td>
+    <td width="50%">
+      <h3>About Me</h3>
+      <p>...</p>
+    </td>
+  </tr>
+</table>`}
+              </pre>
+            </div>
+
+            <div className="bg-[#050505] p-6 rounded-2xl border border-[#30363d] space-y-4">
+              <h4 className="text-white font-bold flex items-center gap-2">
+                 <span className="text-[#bc8cff]">02.</span> Dynamic Content
+              </h4>
+              <p className="text-xs text-[#8b949e]">Embed dynamic SVG metrics that update automatically.</p>
+              <code className="block text-xs text-[#58a6ff] bg-[#161b22] p-3 rounded-lg">
+                [![My Stats](https://metricverse.pages.dev/api/card)](https://github.com/user)
+              </code>
+            </div>
           </div>
-          <div className="p-4 bg-[#238636]/10 border border-[#238636]/30 rounded-xl text-[#3fb950] text-sm font-bold">
-            PRO TIP: Use HTML &lt;br/&gt; tags to force spacing between your metric rows!
+
+          <div className="p-6 bg-gradient-to-r from-[#1f6feb]/10 to-[#238636]/10 border border-[#30363d] rounded-2xl">
+            <h4 className="text-[#fff] font-bold mb-2">💡 Pro Tip: Hidden Details</h4>
+            <p className="text-sm text-[#8b949e]">
+              Use the <code className="text-[#58a6ff]">&lt;details&gt;</code> and <code className="text-[#58a6ff]">&lt;summary&gt;</code> tags to hide long content like stack traces, extensive project lists, or certificates, keeping your profile clean.
+            </p>
           </div>
         </div>
       )
     },
     {
-      title: "GitHub Optimization",
+      title: "Profile Optimization",
       icon: "🚀",
-      subtitle: "Hacking your profile discoverability",
+      subtitle: "Hacking your discoverability",
       content: (
-        <div className="space-y-6">
-          <p className="text-[#8b949e]">GitHub is your living resume. To stand out to recruiters, follow this checklist:</p>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="space-y-8">
+          <div className="flex items-start gap-6">
+            <div className="w-12 h-12 rounded-full bg-[#3fb950]/20 flex items-center justify-center flex-shrink-0 text-[#3fb950]">
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+            </div>
+            <div>
+              <h3 className="text-xl font-bold text-white mb-2">The "Recruiter Filter"</h3>
+              <p className="text-[#8b949e] text-sm leading-relaxed">
+                Recruiters spend an average of 6 seconds scanning a profile. They look for:
+                <br/><br/>
+                1. <strong className="text-white">Active contributions</strong> (Green squares)
+                <br/>
+                2. <strong className="text-white">Top languages</strong> (Matching the job description)
+                <br/>
+                3. <strong className="text-white">Pinned Projects</strong> (With live demos)
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-4">
+            <h4 className="text-xs uppercase tracking-widest font-bold text-gray-500">Actionable Checklist</h4>
             {[
-              "Update your Bio with specific tech keywords (e.g., 'Golang Expert').",
-              "Pin your 6 most complex repositories with clear descriptions.",
-              "Use 'Special Repositories' (Username/Username) to host your main README.",
-              "Add Social Links (Twitter, LinkedIn) to the left sidebar.",
-              "Maintain a 'Green Streak' - consistent daily contributions.",
-              "Collaborate on trending Open Source repos to get 'Verified' vibes."
+              "Set a professional avatar (no anime/memes unless you are a senior dev).",
+              "Write a bio that states: [Current Role] @ [Company] | Building [Project].",
+              "Pin your 6 best repositories. Rename them if they are default `kebab-case`.",
+              "Add a link to your personal portfolio or LinkedIn.",
+              "Enable the 'Achievements' section in your profile settings."
             ].map((text, i) => (
-              <li key={i} className="flex items-start gap-3 text-sm text-white/80 bg-[#161b22] p-4 rounded-xl border border-[#30363d]">
-                <span className="text-[#3fb950] font-black">✓</span> {text}
-              </li>
+              <label key={i} className="flex items-center gap-4 bg-[#161b22] px-6 py-4 rounded-xl border border-[#30363d] cursor-pointer hover:border-[#58a6ff] transition-colors group">
+                <input type="checkbox" className="w-5 h-5 rounded border-gray-600 text-[#58a6ff] focus:ring-offset-[#0d1117]" />
+                <span className="text-sm text-gray-300 group-hover:text-white transition-colors">{text}</span>
+              </label>
             ))}
-          </ul>
+          </div>
         </div>
       )
     },
     {
-      title: "SVG Engineering",
+      title: "Brand Engineering",
       icon: "⚡",
-      subtitle: "Vector graphics for the modern web",
+      subtitle: "SVG architecture & aesthetics",
       content: (
-        <div className="space-y-6">
-          <p className="text-[#8b949e]">Metricverse uses SVG (Scalable Vector Graphics). Here's why it's better than PNG:</p>
-          <div className="space-y-4">
-            <div className="flex items-center gap-4">
-              <div className="w-2 h-2 rounded-full bg-[#bc8cff]"></div>
-              <p className="text-sm text-white font-bold">Resolution Independence: <span className="text-[#8b949e] font-normal">Looks sharp on 4K screens.</span></p>
+        <div className="space-y-8">
+          <p className="text-[#8b949e]">
+            Your GitHub profile is your personal brand. Consistency in color and style establishes professionalism.
+          </p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            <div className="bg-[#161b22] p-6 rounded-2xl border border-[#30363d] text-center group hover:border-[#bc8cff] transition-colors">
+              <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-[#bc8cff] to-[#58a6ff] mb-4 group-hover:scale-110 transition-transform"></div>
+              <h4 className="text-white font-bold mb-2">Modern Gradient</h4>
+              <p className="text-[10px] text-[#8b949e]">High-contrast gradients that pop against dark mode.</p>
             </div>
-            <div className="flex items-center gap-4">
-              <div className="w-2 h-2 rounded-full bg-[#bc8cff]"></div>
-              <p className="text-sm text-white font-bold">DOM-like Structure: <span className="text-[#8b949e] font-normal">Easily animated with CSS keyframes.</span></p>
+            <div className="bg-[#161b22] p-6 rounded-2xl border border-[#30363d] text-center group hover:border-[#3fb950] transition-colors">
+              <div className="w-16 h-16 mx-auto rounded-full bg-[#0d1117] border-2 border-[#3fb950] mb-4 font-mono flex items-center justify-center text-[#3fb950] text-xs">
+                 &gt;_
+              </div>
+              <h4 className="text-white font-bold mb-2">Terminal / Hacker</h4>
+              <p className="text-[10px] text-[#8b949e]">Monospaced fonts and neon green accents.</p>
             </div>
-            <div className="flex items-center gap-4">
-              <div className="w-2 h-2 rounded-full bg-[#bc8cff]"></div>
-              <p className="text-sm text-white font-bold">Lightweight: <span className="text-[#8b949e] font-normal">Our typical metric is only 2KB of text data.</span></p>
+            <div className="bg-[#161b22] p-6 rounded-2xl border border-[#30363d] text-center group hover:border-[#ff7b72] transition-colors">
+              <div className="w-16 h-16 mx-auto rounded-full bg-white border-4 border-black mb-4 flex items-center justify-center">
+                 <div className="w-8 h-8 bg-black"></div>
+              </div>
+              <h4 className="text-white font-bold mb-2">Neo-Brutalism</h4>
+              <p className="text-[10px] text-[#8b949e]">Bold strokes, hard shadows, and vibrant un-mixed colors.</p>
             </div>
           </div>
-          <div className="bg-[#161b22] p-6 rounded-2xl border border-[#30363d]">
-            <h4 className="text-[#fff] font-black text-xs uppercase mb-4 tracking-widest">SVG Anatomy Example</h4>
-            <pre className="text-[10px] text-[#58a6ff] font-mono leading-relaxed overflow-x-auto">
-{`<svg width="100" height="100">
-  <circle cx="50" cy="50" r="40" fill="#3fb950" />
-  <style>
-    circle { animation: pulse 1s infinite; }
-    @keyframes pulse { 50% { r: 45; } }
-  </style>
-</svg>`}
-            </pre>
+
+          <div className="bg-[#161b22] p-8 rounded-2xl border border-[#30363d]">
+            <h4 className="text-[#fff] font-black text-xs uppercase mb-6 tracking-widest">Theme Harmony Rule</h4>
+            <div className="flex flex-col gap-4">
+               <div className="flex items-center gap-4">
+                 <div className="w-8 h-8 rounded-lg bg-blue-500"></div>
+                 <div className="w-8 h-8 rounded-lg bg-purple-500"></div>
+                 <span className="text-gray-400 text-sm">= <span className="text-white font-bold">Good</span> (Analogous)</span>
+               </div>
+               <div className="flex items-center gap-4">
+                 <div className="w-8 h-8 rounded-lg bg-red-500"></div>
+                 <div className="w-8 h-8 rounded-lg bg-green-500"></div>
+                 <span className="text-gray-400 text-sm">= <span className="text-white font-bold">Risky</span> (Clashing if not handled well)</span>
+               </div>
+            </div>
+            <p className="mt-6 text-xs text-gray-500">
+              Metricverse allows you to select metrics that fit these specific themes. Don't mix "8-bit" with "Corporate" unless you know what you're doing.
+            </p>
           </div>
         </div>
       )

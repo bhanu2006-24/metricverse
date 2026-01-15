@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --color-github-dark: #0d1117;
+  --color-github-light: #ffffff;
+  --color-github-border: #30363d;
+  --color-github-accent: #58a6ff;
+  --font-sans: "Inter", sans-serif;
+}
+
+body {
+  @apply bg-github-dark text-white font-sans overflow-x-hidden;
+}
