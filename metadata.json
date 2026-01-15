@@ -1,0 +1,5 @@
+{
+  "name": "Metricverse",
+  "description": "A modular GitHub profile metrics generator that creates beautiful, downloadable SVG cards for your repositories, followers, bio, and more.",
+  "requestFramePermissions": []
+}
