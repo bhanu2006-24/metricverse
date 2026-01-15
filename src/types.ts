@@ -1,29 +1,43 @@
+export interface Lesson {
+  id: string;
+  title: string;
+  type: 'read' | 'practice';
+  content: React.ReactNode;
+  practiceMode?: 'markdown' | 'math' | 'bash';
+  initialCode?: string;
+}
+
+export interface Course {
+  id: string;
+  title: string;
+  subtitle: string;
+  icon: string;
+  lessons: Lesson[];
+}
 
 export interface GitHubUser {
   login: string;
-  name: string | null;
-  bio: string | null;
+  name: string;
+  avatar_url: string;
   public_repos: number;
-  public_gists: number;
   followers: number;
   following: number;
+  html_url: string;
+  bio: string;
   created_at: string;
-  updated_at: string;
-  avatar_url: string;
-  location: string | null;
-  company: string | null;
-  blog: string | null;
-  twitter_username: string | null;
-  hireable: boolean | null;
-  repos_data?: any[];
-  events_data?: any[];
+  repos_data?: GithubRepo[];
 }
 
-export type MetricCategory = 'motion' | 'intelligence' | 'gamified' | 'essential' | 'themed' | 'banner';
+export interface GithubRepo {
+  name: string;
+  description: string;
+  language: string;
+  stargazers_count: number;
+  forks_count: number;
+  html_url: string;
+}
 
-export interface MetricDefinition {
+export interface MetricCategory {
   id: string;
-  title: string;
-  category: MetricCategory;
-  generate: (user: GitHubUser) => string;
+  label: string;
 }
