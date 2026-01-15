@@ -25,6 +25,7 @@ const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [accentColor, setAccentColor] = useState('#58a6ff');
   const [searchHistory, setSearchHistory] = useState<string[]>([]);
   
   // Load initial history
@@ -151,11 +152,32 @@ const App: React.FC = () => {
                    ))}
                 </div>
 
+                {/* Customization Toolbar */}
+                <div className="flex items-center justify-center gap-4 py-6 animate-fade-in">
+                  <span className="text-[10px] uppercase font-bold text-gray-500 tracking-widest">Theme Color:</span>
+                  {[
+                    { c: '#58a6ff', n: 'Blue' }, 
+                    { c: '#3fb950', n: 'Green' }, 
+                    { c: '#bc8cff', n: 'Purple' }, 
+                    { c: '#ff7b72', n: 'Red' },
+                    { c: '#ffa657', n: 'Orange' },
+                    { c: '#d2a8ff', n: 'Magenta' }
+                  ].map(theme => (
+                    <button
+                      key={theme.c}
+                      onClick={() => setAccentColor(theme.c)}
+                      className={`w-6 h-6 rounded-full border-2 transition-all cursor-pointer ${accentColor === theme.c ? 'border-white scale-125 shadow-lg shadow-white/20' : 'border-transparent opacity-50 hover:opacity-100 hover:scale-110'}`}
+                      style={{ backgroundColor: theme.c }}
+                      title={theme.n}
+                    />
+                  ))}
+                </div>
+
                 {/* Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pb-20">
                   {filteredMetrics.map((metric, i) => (
                     <div key={metric.id} className="animate-fade-in-up" style={{ animationDelay: `${i * 50}ms` }}>
-                      <MetricCard id={metric.id} title={metric.title} svgContent={metric.generate(userData)} />
+                      <MetricCard id={metric.id} title={metric.title} svgContent={metric.generate(userData)} color={accentColor} />
                     </div>
                   ))}
                   {filteredMetrics.length === 0 && (

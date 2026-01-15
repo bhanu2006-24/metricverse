@@ -5,9 +5,18 @@ interface MetricCardProps {
   id: string;
   title: string;
   svgContent: string;
+  color: string;
 }
 
-const MetricCard: React.FC<MetricCardProps> = ({ id, title, svgContent }) => {
+const MetricCard: React.FC<MetricCardProps> = ({ id, title, svgContent, color }) => {
+  // Replace default accent color (#58a6ff) with selected color
+  // Also try to replace the green (#3fb950) if we want a full theme shift, but let's stick to accent
+  const customizedSvg = React.useMemo(() => {
+    return svgContent
+      .replace(/#58a6ff/g, color)
+      .replace(/#bc8cff/g, color === '#58a6ff' ? '#bc8cff' : color) // Try to monochrome it if color changed
+      .replace(/fill="none"/g, 'fill="none"') // No-op to break chain if needed
+  }, [svgContent, color]);
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -28,13 +37,13 @@ const MetricCard: React.FC<MetricCardProps> = ({ id, title, svgContent }) => {
     // Or maybe we just provide the SVG to download?
     // Let's provide "Copy SVG" and "Download SVG".
     
-    navigator.clipboard.writeText(svgContent);
+    navigator.clipboard.writeText(customizedSvg);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
   const handleDownload = () => {
-    const blob = new Blob([svgContent], { type: 'image/svg+xml' });
+    const blob = new Blob([customizedSvg], { type: 'image/svg+xml' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
@@ -73,7 +82,7 @@ const MetricCard: React.FC<MetricCardProps> = ({ id, title, svgContent }) => {
       
       <div className="p-6 flex items-center justify-center min-h-[200px] bg-[url('/grid.svg')] bg-center relative">
          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#161b22]/50 pointer-events-none"></div>
-         <div className="relative z-10 transform group-hover:scale-[1.02] transition-transform duration-500" dangerouslySetInnerHTML={{ __html: svgContent }} />
+         <div className="relative z-10 transform group-hover:scale-[1.02] transition-transform duration-500" dangerouslySetInnerHTML={{ __html: customizedSvg }} />
       </div>
 
       <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>

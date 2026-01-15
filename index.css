@@ -5,9 +5,36 @@
   --color-github-light: #ffffff;
   --color-github-border: #30363d;
   --color-github-accent: #58a6ff;
-  --font-sans: "Inter", sans-serif;
+  --font-sans: 'Outfit', sans-serif;
+  --font-display: 'Saira', sans-serif;
 }
 
 body {
   @apply bg-github-dark text-white font-sans overflow-x-hidden;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0d1117; 
+}
+::-webkit-scrollbar-thumb {
+  background: #30363d; 
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #58a6ff; 
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
 }

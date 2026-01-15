@@ -197,11 +197,30 @@ const Guides: React.FC = () => {
               Live Sandbox
             </h4>
             <p className="text-[#8b949e] text-[11px] leading-relaxed mb-6">Test your README layouts in real-time before deploying to GitHub.</p>
-            <textarea 
-              value={mdInput}
-              onChange={(e) => setMdInput(e.target.value)}
-              className="w-full h-40 bg-[#050505] border border-[#30363d] rounded-xl p-4 text-xs font-mono text-[#3fb950] focus:border-[#58a6ff] outline-none transition-all"
-            />
+            <div className="flex flex-col h-[500px]">
+              <div className="flex-1 bg-[#050505] border border-[#30363d] rounded-t-xl p-4">
+                 <div className="text-[10px] text-[#8b949e] uppercase tracking-widest mb-2 font-bold">Markdown Input</div>
+                 <textarea 
+                   value={mdInput}
+                   onChange={(e) => setMdInput(e.target.value)}
+                   className="w-full h-[calc(100%-24px)] bg-transparent outline-none text-xs font-mono text-[#3fb950] resize-none"
+                 />
+              </div>
+              <div className="flex-1 bg-white border border-[#30363d] rounded-b-xl p-4 overflow-y-auto">
+                 <div className="text-[10px] text-gray-500 uppercase tracking-widest mb-2 font-bold border-b pb-2">Live Preview (Rendered)</div>
+                 <div className="prose prose-sm prose-slate max-w-none text-black">
+                    {/* Basic Markdown Rendering - In production use 'react-markdown' or 'remark' */}
+                    {mdInput.split('\n').map((line, i) => {
+                      if (line.startsWith('# ')) return <h1 key={i} className="text-2xl font-bold mb-2">{line.slice(2)}</h1>;
+                      if (line.startsWith('## ')) return <h2 key={i} className="text-xl font-bold mb-2">{line.slice(3)}</h2>;
+                      if (line.startsWith('- ')) return <li key={i} className="ml-4">{line.slice(2)}</li>;
+                      if (line.startsWith('**') && line.endsWith('**')) return <p key={i} className="font-bold">{line.slice(2, -2)}</p>;
+                      if (line.trim() === '') return <br key={i}/>;
+                      return <p key={i}>{line}</p>;
+                    })}
+                 </div>
+              </div>
+            </div>
           </div>
         </div>
 

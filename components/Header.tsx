@@ -16,8 +16,8 @@ const Header: React.FC<HeaderProps> = ({ currentTab, onTabChange }) => {
                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
              </svg>
           </div>
-          <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70 tracking-tight">
-            Metricverse
+          <span className="text-3xl font-[900] bg-clip-text text-transparent bg-white tracking-tighter font-display uppercase italic">
+            Metric<span className="text-[#58a6ff]">Verse</span>
           </span>
         </div>
 
