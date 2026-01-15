@@ -49,7 +49,7 @@ const MetricEditorModal: React.FC<MetricEditorModalProps> = ({ isOpen, onClose, 
         <div className="flex-1 overflow-hidden flex flex-col md:flex-row">
             
             {/* Sidebar Controls */}
-            <div className="w-full md:w-64 bg-[#0d1117] border-r border-[#30363d] p-4 space-y-6 overflow-y-auto">
+            <div className="w-full md:w-64 bg-[#0d1117] border-r border-[#30363d] p-4 space-y-6 flex-shrink-0">
                 <div>
                     <label className="text-[10px] uppercase font-bold text-gray-500 tracking-widest block mb-3">View Mode</label>
                     <div className="flex bg-[#161b22] p-1 rounded-lg border border-[#30363d]">
@@ -80,16 +80,16 @@ const MetricEditorModal: React.FC<MetricEditorModalProps> = ({ isOpen, onClose, 
             </div>
 
             {/* Main Area */}
-            <div className="flex-1 bg-[#050505] relative flex flex-col">
+            <div className="flex-1 bg-[#050505] relative flex flex-col min-w-0 overflow-hidden">
                 {activeTab === 'preview' ? (
                     <div className="flex-1 flex items-center justify-center p-8 bg-[url('/grid.svg')] overflow-auto">
-                         <div className="relative z-10 shadow-2xl" dangerouslySetInnerHTML={{ __html: code }} />
+                         <div className="relative z-10 shadow-2xl w-full flex justify-center [&>svg]:w-full [&>svg]:h-auto [&>svg]:max-w-4xl" dangerouslySetInnerHTML={{ __html: code }} />
                     </div>
                 ) : (
                     <textarea 
                         value={code}
                         onChange={(e) => setCode(e.target.value)}
-                        className="flex-1 w-full bg-[#0d1117] text-gray-300 font-mono text-xs p-6 outline-none resize-none"
+                        className="flex-1 w-full bg-[#0d1117] text-gray-300 font-mono text-sm leading-relaxed p-6 outline-none resize-none"
                         spellCheck={false}
                     />
                 )}

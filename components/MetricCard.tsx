@@ -16,6 +16,8 @@ const MetricCard: React.FC<MetricCardProps> = ({ id, title, svgContent, color, o
     return svgContent
       .replace(/#58a6ff/g, color)
       .replace(/#bc8cff/g, color === '#58a6ff' ? '#bc8cff' : color) // Try to monochrome it if color changed
+      .replace(/width="\d+"/, 'width="100%"') // Ensure it takes full width of container
+      .replace(/height="\d+"/, '') // Remove fixed height to let aspect ratio control it
       .replace(/fill="none"/g, 'fill="none"') // No-op to break chain if needed
   }, [svgContent, color]);
   const [copied, setCopied] = useState(false);
